@@ -49,11 +49,13 @@ composer patches-repatch && vendor/bin/phpunit $T --group CVE-2026-27461   # mus
 
 ## Skipped
 
-| CVE | Reason |
+The VEX and `audit-ignore.json` mark these as handled only under the stated precondition. Check each one before copying the ignore list into a project; drop the entry where the precondition does not hold.
+
+| CVE | Precondition |
 | --- | --- |
-| CVE-2026-45260 | WebDAV; blocked at the reverse proxy |
-| CVE-2026-45704 | Risk accepted |
-| CVE-2026-45703 | Affected bundle not installed |
+| CVE-2026-45260, CVE-2026-45162 | `/admin/asset/webdav` is blocked at the reverse proxy |
+| CVE-2026-45704 | CustomReports share bypass accepted (admin-only impact) |
+| CVE-2026-45703 | `pimcore/word-export-bundle` is not installed |
 | CVE-2026-45162 WebDAV, Table, `DataObject\Service` hunks | WebDAV and Block hardening was walked back upstream in #19345; Table and `DataObject\Service` changes were outside the requested subset |
 
 ## Silencing scanners

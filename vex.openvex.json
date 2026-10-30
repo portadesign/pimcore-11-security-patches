@@ -2,14 +2,17 @@
     "@context": "https://openvex.dev/ns/v0.2.0",
     "@id": "https://github.com/portadesign/pimcore-11-security-patches/vex.openvex.json",
     "author": "PORTA DESIGN",
-    "timestamp": "2026-10-30T11:10:35Z",
-    "last_updated": "2026-10-30T11:10:35Z",
+    "timestamp": "2026-10-30T11:42:05Z",
+    "last_updated": "2026-10-30T11:42:05Z",
     "version": 1,
     "tooling": "pimcore-11-security-patches v1.1.0",
     "statements": [
         {
             "vulnerability": {
-                "name": "CVE-2026-27461"
+                "name": "CVE-2026-27461",
+                "aliases": [
+                    "PKSA-8x4n-f9v2-4s1d"
+                ]
             },
             "products": [
                 {
@@ -310,7 +313,7 @@
             ],
             "status": "not_affected",
             "justification": "vulnerable_code_not_present",
-            "impact_statement": "The affected word-export bundle is not installed."
+            "impact_statement": "Precondition: pimcore/word-export-bundle is not installed in the host project."
         },
         {
             "vulnerability": {
@@ -335,7 +338,7 @@
             ],
             "status": "not_affected",
             "justification": "inline_mitigations_already_exist",
-            "impact_statement": "WebDAV is blocked at the reverse proxy."
+            "impact_statement": "Precondition: the host blocks /admin/asset/webdav at the reverse proxy."
         }
     ]
 }

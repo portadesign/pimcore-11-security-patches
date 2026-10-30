@@ -12,7 +12,7 @@
   "advisories": [
     {
       "cve": "CVE-2026-27461",
-      "pksa": null,
+      "pksa": "PKSA-8x4n-f9v2-4s1d",
       "status": "fixed",
       "package": "pimcore/pimcore",
       "patch": "patches/pimcore-CVE-2026-27461-dependency-rlike.patch",
@@ -159,7 +159,7 @@
       "status": "not_affected",
       "package": "pimcore/pimcore",
       "justification": "vulnerable_code_not_present",
-      "impact": "The affected word-export bundle is not installed.",
+      "impact": "Precondition: pimcore/word-export-bundle is not installed in the host project.",
       "reason": "CVE-2026-45703 word-export bundle not installed"
     },
     {
@@ -168,7 +168,7 @@
       "status": "not_affected",
       "package": "pimcore/pimcore",
       "justification": "inline_mitigations_already_exist",
-      "impact": "WebDAV is blocked at the reverse proxy.",
+      "impact": "Precondition: the host blocks /admin/asset/webdav at the reverse proxy.",
       "reason": "CVE-2026-45260 WebDAV blocked at proxy"
     },
     {
@@ -176,7 +176,7 @@
       "pksa": "PKSA-vd5r-2gyh-m6cc",
       "status": "accepted",
       "package": "pimcore/pimcore",
-      "reason": "CVE-2026-45704 risk accepted"
+      "reason": "CVE-2026-45704 risk accepted (CustomReports share bypass, admin-only impact)"
     }
   ]
 }
