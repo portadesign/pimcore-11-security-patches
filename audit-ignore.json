@@ -3,7 +3,7 @@
         "audit": {
             "ignore": {
                 "PKSA-6dhb-gq75-qpgr": "CVE-2026-11407 backported",
-                "PKSA-882j-k212-wjbf": "CVE-2026-45162 backported (safe subset)",
+                "PKSA-882j-k212-wjbf": "CVE-2026-45162 partially backported, WebDAV blocked at proxy",
                 "PKSA-fpxc-s2d8-24zv": "CVE-2026-55072 backported",
                 "PKSA-kkjc-bw16-f3kq": "CVE-2026-55220 backported",
                 "PKSA-kp19-xmdp-rvyj": "CVE-2026-44739 backported",
@@ -20,7 +20,7 @@
             "advisories": {
                 "ignore-id": {
                     "PKSA-6dhb-gq75-qpgr": "CVE-2026-11407 backported",
-                    "PKSA-882j-k212-wjbf": "CVE-2026-45162 backported (safe subset)",
+                    "PKSA-882j-k212-wjbf": "CVE-2026-45162 partially backported, WebDAV blocked at proxy",
                     "PKSA-fpxc-s2d8-24zv": "CVE-2026-55072 backported",
                     "PKSA-kkjc-bw16-f3kq": "CVE-2026-55220 backported",
                     "PKSA-kp19-xmdp-rvyj": "CVE-2026-44739 backported",

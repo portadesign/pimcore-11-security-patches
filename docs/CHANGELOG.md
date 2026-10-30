@@ -1,3 +1,4 @@
+- 2026-10-30 12:20 — `advisories.json`/`vex.openvex.json`: CVE-2026-45162 is `affected` with an `action_statement` (partial backport, block /asset/webdav at the proxy); `bin/build-vex.php` supports the `affected` status; audit ignore reason updated.
 - 2026-10-30 12:20 — README: install from the public repository with the vcs repository line, `composer require` and `cache:clear`.
 - 2026-10-30 12:20 — `ComposerPlugin`: on every post-install/post-update verifies each locked patch is applied to the installed package (`patch -R --dry-run`, `git apply --check -R` fallback in git installs, patch file from the composer-patches cache); prints `all N patches applied` or `M patch(es) missing in <package>, re-applying` and repatches.
 - 2026-10-30 12:00 — README: install reduced to `composer require`, scanner silencing section, CI note.

@@ -108,7 +108,7 @@
     {
       "cve": "CVE-2026-45162",
       "pksa": "PKSA-882j-k212-wjbf",
-      "status": "fixed",
+      "status": "affected",
       "package": "pimcore/pimcore",
       "patch": "patches/pimcore-CVE-2026-55220-unserialize-hardening.patch",
       "commits": [
@@ -117,8 +117,8 @@
         "c7fa99aa7e",
         "aa282383b8"
       ],
-      "notes": "Safe subset only: WebDAV, Table and DataObject Service hunks are not backported.",
-      "reason": "CVE-2026-45162 backported (safe subset)"
+      "action": "Partial backport: Serialize/Hotspotimage/Site/CustomLayout/TmpStore hardened; Block and WebDAV hunks were reverted upstream; block /asset/webdav at the reverse proxy",
+      "reason": "CVE-2026-45162 partially backported, WebDAV blocked at proxy"
     },
     {
       "cve": "CVE-2026-58401",

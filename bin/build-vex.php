@@ -19,6 +19,7 @@ $options = getopt(short_options: '', long_options: ['bump', 'tooling::']);
  *         notes?: string,
  *         justification?: string,
  *         impact?: string,
+ *         action?: string,
  *         reason: string
  *     }>
  * } $manifest
@@ -48,7 +49,7 @@ foreach ($manifest['advisories'] as $advisory) {
         $auditIgnore[$advisory['pksa']] = $advisory['reason'];
     }
 
-    if (!in_array(needle: $advisory['status'], haystack: ['fixed', 'not_affected'], strict: true)) {
+    if (!in_array(needle: $advisory['status'], haystack: ['fixed', 'affected', 'not_affected'], strict: true)) {
         continue;
     }
 
@@ -64,16 +65,20 @@ foreach ($manifest['advisories'] as $advisory) {
     }
 
     $statement = ['vulnerability' => $vulnerability, 'products' => $products, 'status' => $advisory['status']];
-    if ('fixed' === $advisory['status']) {
+    if ('not_affected' === $advisory['status']) {
+        $statement['justification'] = $advisory['justification'] ?? '';
+        $statement['impact_statement'] = $advisory['impact'] ?? '';
+    } else {
         $statement['status_notes'] = trim(string: sprintf(
-            'Backported in %s (upstream %s). %s',
+            '%s in %s (upstream %s). %s',
+            'fixed' === $advisory['status'] ? 'Backported' : 'Partially backported',
             $advisory['patch'] ?? '',
             implode(separator: ', ', array: $advisory['commits'] ?? []),
             $advisory['notes'] ?? '',
         ));
-    } else {
-        $statement['justification'] = $advisory['justification'] ?? '';
-        $statement['impact_statement'] = $advisory['impact'] ?? '';
+    }
+    if ('affected' === $advisory['status']) {
+        $statement['action_statement'] = $advisory['action'] ?? '';
     }
     $statements[] = $statement;
 }

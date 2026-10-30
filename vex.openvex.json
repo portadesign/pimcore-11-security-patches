@@ -2,8 +2,8 @@
     "@context": "https://openvex.dev/ns/v0.2.0",
     "@id": "https://github.com/portadesign/pimcore-11-security-patches/vex.openvex.json",
     "author": "PORTA DESIGN",
-    "timestamp": "2026-10-30T10:57:19Z",
-    "last_updated": "2026-10-30T10:57:19Z",
+    "timestamp": "2026-10-30T11:10:35Z",
+    "last_updated": "2026-10-30T11:10:35Z",
     "version": 1,
     "tooling": "pimcore-11-security-patches v1.1.0",
     "statements": [
@@ -214,8 +214,9 @@
                     }
                 }
             ],
-            "status": "fixed",
-            "status_notes": "Backported in patches/pimcore-CVE-2026-55220-unserialize-hardening.patch (upstream b184c01bf1, 4788bf3a3a, c7fa99aa7e, aa282383b8). Safe subset only: WebDAV, Table and DataObject Service hunks are not backported."
+            "status": "affected",
+            "status_notes": "Partially backported in patches/pimcore-CVE-2026-55220-unserialize-hardening.patch (upstream b184c01bf1, 4788bf3a3a, c7fa99aa7e, aa282383b8).",
+            "action_statement": "Partial backport: Serialize/Hotspotimage/Site/CustomLayout/TmpStore hardened; Block and WebDAV hunks were reverted upstream; block /asset/webdav at the reverse proxy"
         },
         {
             "vulnerability": {
