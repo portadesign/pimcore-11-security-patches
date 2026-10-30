@@ -8,6 +8,8 @@ final readonly class ComposerPlugin implements \Composer\Plugin\PluginInterface,
 {
     private const GUARD_ENV = 'PORTADESIGN_PATCHES_SYNC';
 
+    private const COMMAND_NOT_FOUND = 127;
+
     private const PATCH_COMMANDS = ['patches-relock', 'patches-repatch'];
 
     public function activate(\Composer\Composer $composer, \Composer\IO\IOInterface $io): void
@@ -52,21 +54,96 @@ final readonly class ComposerPlugin implements \Composer\Plugin\PluginInterface,
             disabledResolvers: is_array($disabledResolvers) ? $disabledResolvers : [],
         ))->loadFromResolvers();
 
+        $io = $event->getIO();
         $reason = $this->detectDrift(patchesPlugin: $patchesPlugin, resolved: $resolved);
+
         if (null === $reason) {
-            return;
+            $inspection = $this->inspectInstalledPatches(composer: $composer, patchesPlugin: $patchesPlugin, io: $io);
+            if ([] === $inspection['missing']) {
+                if ($inspection['checked'] > 0) {
+                    $io->write(messages: sprintf('pimcore-11-security-patches: all %d patches applied', $inspection['checked']));
+                }
+
+                return;
+            }
+
+            foreach ($inspection['missing'] as $package => $count) {
+                $io->write(messages: sprintf('pimcore-11-security-patches: %d patch(es) missing in %s, re-applying', $count, $package));
+            }
+        } else {
+            $io->write(messages: sprintf('pimcore-11-security-patches: %s, relocking and re-applying patches', $reason));
         }
 
-        $io = $event->getIO();
         $patched = $this->installedPatchedPackages(composer: $composer, collection: $resolved);
-
-        $io->write(messages: sprintf('<info>pimcore-11-security-patches:</info> %s, relocking and re-applying patches', $reason));
         $this->runPatchCommands(io: $io, devMode: $event->isDevMode());
         $this->assertInstalled(composer: $composer, patchedPackages: $patched);
         $io->write(messages: sprintf(
-            '<info>pimcore-11-security-patches:</info> patches applied to %s',
+            'pimcore-11-security-patches: patches applied to %s',
             [] === $patched ? 'no packages' : implode(separator: ', ', array: $patched),
         ));
+    }
+
+    /**
+     * @return array{checked: int, missing: array<string, int>}
+     */
+    private function inspectInstalledPatches(
+        \Composer\Composer $composer,
+        \cweagans\Composer\Plugin\Patches $patchesPlugin,
+        \Composer\IO\IOInterface $io,
+    ): array {
+        if (!$patchesPlugin->getLocker()->isLocked()) {
+            return ['checked' => 0, 'missing' => []];
+        }
+
+        $locked = \cweagans\Composer\PatchCollection::fromJson($patchesPlugin->getLocker()->getLockData());
+        $repository = $composer->getRepositoryManager()->getLocalRepository();
+        $executor = new \Composer\Util\ProcessExecutor($io);
+        $checked = 0;
+        $missing = [];
+
+        foreach ($this->patchedPackages(collection: $locked) as $name) {
+            $package = $repository->findPackage(name: $name, constraint: '*');
+            $installPath = null === $package ? null : $composer->getInstallationManager()->getInstallPath(package: $package);
+            if (null === $installPath) {
+                continue;
+            }
+
+            foreach ($locked->getPatchesForPackage(package: $name) as $patch) {
+                if (!$patch instanceof \cweagans\Composer\Patch) {
+                    continue;
+                }
+
+                $patchesPlugin->download(patch: $patch);
+                ++$checked;
+                if (!$this->isApplied(executor: $executor, patch: $patch, installPath: $installPath)) {
+                    $missing[$name] = ($missing[$name] ?? 0) + 1;
+                }
+            }
+        }
+
+        return ['checked' => $checked, 'missing' => $missing];
+    }
+
+    private function isApplied(\Composer\Util\ProcessExecutor $executor, \cweagans\Composer\Patch $patch, string $installPath): bool
+    {
+        $file = $patch->localPath ?? null;
+        if (null === $file) {
+            return false;
+        }
+
+        $strip = '-p' . ($patch->depth ?? 1);
+        $output = '';
+        $exitCode = $executor->execute(
+            command: ['patch', $strip, '--dry-run', '-R', '-s', '-f', '--batch', '-i', $file],
+            output: $output,
+            cwd: $installPath,
+        );
+
+        if (self::COMMAND_NOT_FOUND !== $exitCode || !is_dir(filename: $installPath . '/.git')) {
+            return 0 === $exitCode;
+        }
+
+        return 0 === $executor->execute(command: ['git', 'apply', '--check', '-R', $strip, $file], output: $output, cwd: $installPath);
     }
 
     private function findPatchesPlugin(\Composer\Composer $composer): ?\cweagans\Composer\Plugin\Patches
