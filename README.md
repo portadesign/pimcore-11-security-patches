@@ -68,6 +68,12 @@ The VEX and `audit-ignore.json` mark these as handled only under the stated prec
 
 ## Silencing scanners
 
-`trivy fs --scanners vuln --vex vendor/portadesign/pimcore-11-security-patches/vex.openvex.json .` drops the advisories fixed by this package.
+Trivy: pass `--vex vendor/portadesign/pimcore-11-security-patches/vex.openvex.json`, or for CI templates that call `trivy` without flags put a `trivy.yaml` in the project root:
+
+```yaml
+vulnerability:
+  vex:
+    - vendor/portadesign/pimcore-11-security-patches/vex.openvex.json
+```
 Copy the entries of `audit-ignore.json` into `config.audit.ignore` (and `config.policy.advisories.ignore-id` on Composer 2.10+) to silence `composer audit` and update blocking.
 Both hold only while this package is installed and its patches are applied.
