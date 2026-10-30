@@ -23,7 +23,13 @@ Verified with `git apply --check` and `patch -p1 --dry-run` against pristine 11.
 
 `composer install` alone does not patch packages that are already installed; `patches-repatch` reinstalls `pimcore/pimcore` and `pimcore/admin-ui-classic-bundle` and applies every patch. Patches are resolved from the package's `composer.json` as recorded in `composer.lock`, so after every update of this package run `composer patches-relock && composer patches-repatch` again.
 
-The patch paths assume the default vendor dir (`vendor/portadesign/pimcore-11-security-patches/patches/…`). A project with a custom `vendor-dir` has to copy the entries from this `composer.json` into its own `extra.patches` with adjusted paths.
+Patch files are fetched from `raw.githubusercontent.com` at the tag recorded in this package's `composer.json` (composer-patches resolves dependency patches before the dependency itself is extracted, so a path inside `vendor/` cannot work). Because the repository is private, Composer also needs the token for that host once per machine or CI runner:
+
+```bash
+composer config -g github-oauth.raw.githubusercontent.com <token>
+```
+
+or `COMPOSER_AUTH='{"github-oauth":{"github.com":"<token>","raw.githubusercontent.com":"<token>"}}'`. `patches.lock.json` pins every file by sha256.
 
 To skip a single patch in one project, drop it from the resolved set with the plugin's `ignore-dependency-patches` config or override it in the project's `extra.patches` under the same package key.
 
@@ -69,14 +75,14 @@ Needs the `gh` CLI. Every line must read `OK`; the sequential pass catches confl
 1. Run `verify.sh` with the new tags.
 2. A patch that fails with "already applied" (`git apply --check -R` passes) is in the release: delete the file and its `extra.patches` entry, add a `conflict` lower bound if needed.
 3. A patch that fails otherwise needs a manual rebase: `gh api -H "Accept: application/vnd.github.v3.diff" repos/pimcore/pimcore/commits/<sha>`, keep the header, re-verify on every supported version.
-4. Tag a new version (semver: new patch = minor, removed or changed patch = major if a project could break).
+4. `./release.sh <version>` (rewrites the patch URLs to the new tag, commits, tags, pushes). Semver: new patch = minor, removed or changed patch = major if a project could break.
 
 ## Adding a patch
 
 1. Find the fix on upstream branch `2026.x` (`gh api repos/pimcore/pimcore/security-advisories`, then the referenced commit).
 2. Save the diff as `patches/<package>-<CVE>-<topic>.patch`, paths relative to the package root, header lines before the first `diff --git`.
-3. Add the `extra.patches` entry (key `pimcore/pimcore` or `pimcore/admin-ui-classic-bundle`, path prefixed `vendor/portadesign/pimcore-11-security-patches/patches/`).
-4. `./verify.sh` for every supported version pair, then add the table row above.
+3. Add the `extra.patches` entry (key `pimcore/pimcore` or `pimcore/admin-ui-classic-bundle`, URL in the same form as the existing ones; `release.sh` fixes the tag).
+4. `./verify.sh` for every supported version pair, add the table row above, then `./release.sh <version>`.
 
 ## Skipped
 

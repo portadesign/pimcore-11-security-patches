@@ -20,18 +20,18 @@
   "extra": {
     "patches": {
       "pimcore/pimcore": {
-        "CVE-2026-27461: SQL injection in Dependency Dao RLIKE filter": "vendor/portadesign/pimcore-11-security-patches/patches/pimcore-CVE-2026-27461-dependency-rlike.patch",
-        "CVE-2026-55634: RCE via class definition field name": "vendor/portadesign/pimcore-11-security-patches/patches/pimcore-CVE-2026-55634-class-field-name-rce.patch",
-        "CVE-2026-11407, CVE-2026-115894: Twig sandbox bypass and reachable model getters": "vendor/portadesign/pimcore-11-security-patches/patches/pimcore-CVE-2026-11407-twig-sandbox.patch",
-        "CVE-2026-5394: SQL injection in composite indexes": "vendor/portadesign/pimcore-11-security-patches/patches/pimcore-CVE-2026-5394-composite-index-sqli.patch",
-        "CVE-2026-44739: SQL injection in Custom Reports column configuration": "vendor/portadesign/pimcore-11-security-patches/patches/pimcore-CVE-2026-44739-custom-reports-sql.patch",
-        "CVE-2026-55416: SQL injection in Custom Reports SQL fragments": "vendor/portadesign/pimcore-11-security-patches/patches/pimcore-CVE-2026-55416-custom-reports-sql-fragments.patch",
-        "CVE-2026-55220, CVE-2026-45162: restrict unserialize allowed classes": "vendor/portadesign/pimcore-11-security-patches/patches/pimcore-CVE-2026-55220-unserialize-hardening.patch",
-        "CVE-2026-58401: restrict admin session token deserialization": "vendor/portadesign/pimcore-11-security-patches/patches/pimcore-CVE-2026-58401-admin-session-token.patch",
-        "CVE-2026-55072: anchor class definition ID regex": "vendor/portadesign/pimcore-11-security-patches/patches/pimcore-CVE-2026-55072-class-definition-id-regex.patch"
+        "CVE-2026-27461: SQL injection in Dependency Dao RLIKE filter": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/pimcore-CVE-2026-27461-dependency-rlike.patch",
+        "CVE-2026-55634: RCE via class definition field name": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/pimcore-CVE-2026-55634-class-field-name-rce.patch",
+        "CVE-2026-11407, CVE-2026-115894: Twig sandbox bypass and reachable model getters": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/pimcore-CVE-2026-11407-twig-sandbox.patch",
+        "CVE-2026-5394: SQL injection in composite indexes": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/pimcore-CVE-2026-5394-composite-index-sqli.patch",
+        "CVE-2026-44739: SQL injection in Custom Reports column configuration": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/pimcore-CVE-2026-44739-custom-reports-sql.patch",
+        "CVE-2026-55416: SQL injection in Custom Reports SQL fragments": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/pimcore-CVE-2026-55416-custom-reports-sql-fragments.patch",
+        "CVE-2026-55220, CVE-2026-45162: restrict unserialize allowed classes": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/pimcore-CVE-2026-55220-unserialize-hardening.patch",
+        "CVE-2026-58401: restrict admin session token deserialization": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/pimcore-CVE-2026-58401-admin-session-token.patch",
+        "CVE-2026-55072: anchor class definition ID regex": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/pimcore-CVE-2026-55072-class-definition-id-regex.patch"
       },
       "pimcore/admin-ui-classic-bundle": {
-        "CVE-2026-44741: SQL injection in translation grid filters": "vendor/portadesign/pimcore-11-security-patches/patches/admin-ui-classic-bundle-CVE-2026-44741-translation-grid.patch"
+        "CVE-2026-44741: SQL injection in translation grid filters": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/admin-ui-classic-bundle-CVE-2026-44741-translation-grid.patch"
       }
     }
   }
