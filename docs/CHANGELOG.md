@@ -1,0 +1,1 @@
+- 2026-10-30 12:00 — Composer plugin `Portadesign\PimcoreSecurityPatches\ComposerPlugin`: on `post-install-cmd`/`post-update-cmd` runs `patches-relock` and `patches-repatch` when `patches.lock.json` is missing or differs from the resolved patch set; `composer require` is enough. Package type is now `composer-plugin`, requires PHP ^8.3.

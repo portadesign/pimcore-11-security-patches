@@ -1,7 +1,7 @@
 {
   "name": "portadesign/pimcore-11-security-patches",
-  "description": "Backports of public Pimcore 2026.x security fixes to pimcore/pimcore 11.5.x and pimcore/admin-ui-classic-bundle 1.7.x, applied automatically through cweagans/composer-patches",
-  "type": "library",
+  "description": "Backports of public Pimcore 2026.x security fixes to pimcore/pimcore 11.5.x and pimcore/admin-ui-classic-bundle 1.7.x, applied automatically on composer require, install and update",
+  "type": "composer-plugin",
   "license": "GPL-3.0-or-later",
   "authors": [
     {
@@ -11,13 +11,31 @@
     }
   ],
   "require": {
+    "php": "^8.3",
+    "composer-plugin-api": "^2.0",
     "cweagans/composer-patches": "^2.0"
   },
   "conflict": {
     "pimcore/pimcore": "<11.5.4 || >=12.0",
     "pimcore/admin-ui-classic-bundle": "<1.7.6 || >=2.0"
   },
+  "autoload": {
+    "psr-4": {
+      "Portadesign\\PimcoreSecurityPatches\\": "src/"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "cweagans/composer-patches": true
+    }
+  },
+  "scripts": {
+    "phpstan": "phpstan analyse --memory-limit=1G",
+    "build-vex": "php bin/build-vex.php"
+  },
   "extra": {
+    "class": "Portadesign\\PimcoreSecurityPatches\\ComposerPlugin",
     "patches": {
       "pimcore/pimcore": {
         "CVE-2026-27461: SQL injection in Dependency Dao RLIKE filter": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/pimcore-CVE-2026-27461-dependency-rlike.patch",
