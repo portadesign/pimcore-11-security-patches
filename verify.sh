@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Usage: ./verify.sh [pimcore-tag] [admin-ui-tag]
-# Applies every patch with git apply --check and patch --dry-run against pristine upstream tarballs (needs gh CLI).
 set -euo pipefail
 root=$(cd "$(dirname "$0")" && pwd)
 pimcore_tag=${1:-v11.5.14.1}
