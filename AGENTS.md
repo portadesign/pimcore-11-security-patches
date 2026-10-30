@@ -19,13 +19,13 @@ Public GitHub repository, not on Packagist. Installation is documented in `READM
 
 ## Tests
 
-- `tests/*Test.php`: exploit regression tests, one group per CVE. They need a host project with a database. Run inside the project container: copy the repo (without `vendor/`) into the project, e.g. `var/tmp/security-patches`, then `PIMCORE_PROJECT_ROOT=/app vendor/bin/phpunit -c var/tmp/security-patches/phpunit.xml.dist`. Last run: 215 tests green on suys-pim11 (11.5.4, PHP 8.3.36). Running them from the host without a database produces hundreds of errors; that is not a regression.
+- `tests/*Test.php`: exploit regression tests, one group per CVE. They need a host project with a database. Run inside the project container: copy the repo (without `vendor/`) into the project, e.g. `var/tmp/security-patches`, then `PIMCORE_PROJECT_ROOT=/app vendor/bin/phpunit -c var/tmp/security-patches/phpunit.xml.dist`. Last run (2026-10-30, v1.2.0): 219 tests green on suys-pim11 (11.5.4), 226 on stock (11.5.14.1), both PHP 8.3.36. Hosts set `SET time_zone` to PHP's offset in `TranslationGridFilterTest`; `TwigSandboxTest` accepts the 11.5.14.1 `TypeError` from `Mail::renderParams()` (upstream cuts the message at `' in "__string'` although the template is named `pimcore_email_subject`). Running them from the host without a database produces hundreds of errors; that is not a regression.
 - `tests/Unit`: plugin unit tests, `vendor/bin/phpunit -c phpunit.unit.xml.dist`, no host needed.
 - `composer phpstan` must be clean.
 
 ## Settled decisions
 
-- Skipped advisories (45260, 45162 WebDAV hunks, 45703, 45704) stay in the shipped VEX and ignore list with their precondition stated in `README.md` "Skipped" and in `advisories.json`. Projects verify the precondition before copying the ignore list. Approved by the owner for all PORTA DESIGN projects on 2026-10-30.
+- Skipped advisories (45260, 45162 WebDAV hunks, 45704) stay in the shipped VEX and ignore list with their precondition stated in `README.md` "Skipped" and in `advisories.json`. Projects verify the precondition before copying the ignore list. Approved by the owner for all PORTA DESIGN projects on 2026-10-30.
 - The VEX tells the truth: 45162 is `affected`, not `fixed`.
 - Verification runs on every install; the cost of downloading is avoided by the bundled files.
 - No Packagist publication; vcs repository line in the README.
@@ -38,7 +38,7 @@ Public GitHub repository, not on Packagist. Installation is documented in `READM
 4. `release.sh` has no clean-tree or `main` guard and does not run `verify.sh` before tagging.
 5. Two data providers in `tests/ClassDefinitionIdentifierTest.php` are empty on a host without classes or reports.
 6. Consider `/D` in the `Data::setName` regex (tester finding on CVE-2026-55634).
-7. The exploit tests have not run on stock (11.5.14.1) yet.
+7. CVE-2026-45703: upstream skips elements without `view` permission silently (200, element omitted); it does not return 403. The backport keeps that behaviour.
 
 ## Conventions
 
@@ -46,6 +46,6 @@ Public GitHub repository, not on Packagist. Installation is documented in `READM
 
 ## Related
 
-- Projects: `suys-pim11` (branch `feat/php83`, on v1.1.0), `stock` (11.5.14.1, cweagans 2, not yet switched to the package).
+- Projects: `suys-pim11` (branch `feat/php83`, on v1.1.0), `stock` (11.5.14.1, cweagans 2, on v1.1.0).
 - `portadesign/docker-library` PR #6 pins `git` and `patch` in `pimcore-php`.
 - [`security-txt`](https://github.com/portadesign/security-txt): Composer package creating and checking security.txt; unrelated to patches.

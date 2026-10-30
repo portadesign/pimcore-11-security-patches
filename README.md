@@ -33,6 +33,7 @@ Scanners: copy `audit-ignore.json` into `composer.json` `config` and point Trivy
 | CVE-2026-55220, CVE-2026-45162 | pimcore | `b184c01bf1`, `4788bf3a3a`, `c7fa99aa7e`, `aa282383b8` | 11.5.4, 11.5.14.1 | Safe subset: `Serialize::unserialize()` `$allowedClasses`, Hotspotimage, Site, CustomLayout, TmpStore. Adds `pimcore.tmp_store.unserialize_allowed_classes`. `Serialize::unserialize()` keeps the permissive default |
 | CVE-2026-58401 | pimcore | `397b881113` | 11.5.4, 11.5.14.1 | Admin session token class allowlist. Custom token classes go to `pimcore.security.session_token_allowed_classes` |
 | CVE-2026-55072 | pimcore | `33a0e1887e` | 11.5.4, 11.5.14.1 | Manual: ID regex anchored with `/D`, anchored name check added after the ID check (the existing name regex differs between 11.5.4 and 11.5.14.1). Block hunk verbatim |
+| CVE-2026-45703 | pimcore | `0ce2232b6f` | 11.5.4, 11.5.14.1 | WordExport authorization bypass: elements without `view` permission for the user are skipped from the export instead of being exported. Upstream skips silently, no 403 |
 | CVE-2026-44741 | admin-ui-classic-bundle | `b5b987c712` (bundle repo) | 1.7.6, 1.7.16 | Translation grid SQLi |
 
 Patch files carry a header with CVE, advisory, upstream commit and verified versions.
@@ -63,7 +64,6 @@ The VEX and `audit-ignore.json` mark these as handled only under the stated prec
 | --- | --- |
 | CVE-2026-45260, CVE-2026-45162 | `/admin/asset/webdav` is blocked at the reverse proxy |
 | CVE-2026-45704 | CustomReports share bypass accepted (admin-only impact) |
-| CVE-2026-45703 | `pimcore/word-export-bundle` is not installed |
 | CVE-2026-45162 WebDAV, Table, `DataObject\Service` hunks | WebDAV and Block hardening was walked back upstream in #19345; Table and `DataObject\Service` changes were outside the requested subset |
 
 ## Silencing scanners

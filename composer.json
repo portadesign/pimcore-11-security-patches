@@ -93,6 +93,11 @@
           "description": "CVE-2026-55072: anchor class definition ID regex",
           "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/pimcore-CVE-2026-55072-class-definition-id-regex.patch",
           "sha256": "901fa8618fbb3e94532b8823307247d642f37ef53096c103eaee38eb16367173"
+        },
+        {
+          "description": "CVE-2026-45703: WordExport authorization bypass, view permission on exported elements",
+          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/pimcore-CVE-2026-45703-wordexport-view-permission.patch",
+          "sha256": "d80ebdcaefa3b2f71cfd819759b027a0ba695fa3f022d98d0e430b65a42e9c16"
         }
       ],
       "pimcore/admin-ui-classic-bundle": [

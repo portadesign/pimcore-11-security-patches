@@ -156,11 +156,13 @@
     {
       "cve": "CVE-2026-45703",
       "pksa": "PKSA-v5bg-33q7-q8zj",
-      "status": "not_affected",
+      "status": "fixed",
       "package": "pimcore/pimcore",
-      "justification": "vulnerable_code_not_present",
-      "impact": "Precondition: pimcore/word-export-bundle is not installed in the host project.",
-      "reason": "CVE-2026-45703 word-export bundle not installed"
+      "patch": "patches/pimcore-CVE-2026-45703-wordexport-view-permission.patch",
+      "commits": [
+        "0ce2232b6f"
+      ],
+      "reason": "CVE-2026-45703 backported"
     },
     {
       "cve": "CVE-2026-45260",

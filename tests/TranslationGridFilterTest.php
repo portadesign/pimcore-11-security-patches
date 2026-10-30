@@ -24,6 +24,7 @@ final class TranslationGridFilterTest extends \PHPUnit\Framework\TestCase
 
     protected function setUp(): void
     {
+        \Pimcore\Db::get()->executeStatement('SET time_zone = ' . \Pimcore\Db::get()->quote(date('P', self::FIXTURES['pd-sec-grid-1'])));
         $this->removeFixtures();
 
         $probe = new \Pimcore\Model\Translation();
@@ -41,6 +42,7 @@ final class TranslationGridFilterTest extends \PHPUnit\Framework\TestCase
     protected function tearDown(): void
     {
         $this->removeFixtures();
+        \Pimcore\Db::get()->executeStatement('SET time_zone = DEFAULT');
     }
 
     /**
