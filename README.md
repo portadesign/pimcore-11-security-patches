@@ -5,19 +5,12 @@ Backports of public Pimcore 2026.x security fixes for `pimcore/pimcore` 11.5.4â€
 ## Install
 
 ```bash
+composer config repositories.pimcore-11-security-patches vcs https://github.com/portadesign/pimcore-11-security-patches
 composer require portadesign/pimcore-11-security-patches
 bin/console cache:clear
 ```
 
-Composer asks once to trust the plugin (`allow-plugins`). On every `composer require`, `install` and `update` the plugin relocks and re-applies the patches when the patch set changed. Commit `composer.json`, `composer.lock`, `patches.lock.json`.
-
-Until the repo is public, run these once first:
-
-```bash
-composer config -g github-oauth.github.com <token>
-composer config -g github-oauth.raw.githubusercontent.com <token>
-composer config repositories.pimcore-11-security-patches vcs https://github.com/portadesign/pimcore-11-security-patches
-```
+Composer asks once to trust the plugin (`allow-plugins`). On every `composer require`, `install` and `update` the plugin checks that each patch is applied to the installed package and relocks and re-applies them when the patch set changed or a patch is missing. Commit `composer.json`, `composer.lock`, `patches.lock.json`.
 
 ## Patches
 
