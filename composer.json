@@ -51,59 +51,59 @@
       "pimcore/pimcore": [
         {
           "description": "CVE-2026-27461: SQL injection in Dependency Dao RLIKE filter",
-          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/pimcore-CVE-2026-27461-dependency-rlike.patch",
+          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.2.0/patches/pimcore-CVE-2026-27461-dependency-rlike.patch",
           "sha256": "74439133006aecf5aa93ed39af9b1e89a26e8b3542bf525c97f4cb3ffbff4c91"
         },
         {
           "description": "CVE-2026-55634: RCE via class definition field name",
-          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/pimcore-CVE-2026-55634-class-field-name-rce.patch",
+          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.2.0/patches/pimcore-CVE-2026-55634-class-field-name-rce.patch",
           "sha256": "35f5a79d62077ed3388e9166580c7d80d1ab11406b98f59a5ba03a9cf5cb33ea"
         },
         {
           "description": "CVE-2026-11407, CVE-2026-115894: Twig sandbox bypass and reachable model getters",
-          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/pimcore-CVE-2026-11407-twig-sandbox.patch",
+          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.2.0/patches/pimcore-CVE-2026-11407-twig-sandbox.patch",
           "sha256": "4ee00e73ac0d8d277037bc3b171d56c3ae1052af04868ee413eecae1b14e6772"
         },
         {
           "description": "CVE-2026-5394: SQL injection in composite indexes",
-          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/pimcore-CVE-2026-5394-composite-index-sqli.patch",
+          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.2.0/patches/pimcore-CVE-2026-5394-composite-index-sqli.patch",
           "sha256": "5050ce1f05651a381567310c0e0b31298aaf4615460846a1ae1f36a0b900da97"
         },
         {
           "description": "CVE-2026-44739: SQL injection in Custom Reports column configuration",
-          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/pimcore-CVE-2026-44739-custom-reports-sql.patch",
+          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.2.0/patches/pimcore-CVE-2026-44739-custom-reports-sql.patch",
           "sha256": "ce19b194116578b09655dccea3ea5a51001cc197962fffd8c07a7feaaec21aac"
         },
         {
           "description": "CVE-2026-55416: SQL injection in Custom Reports SQL fragments",
-          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/pimcore-CVE-2026-55416-custom-reports-sql-fragments.patch",
+          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.2.0/patches/pimcore-CVE-2026-55416-custom-reports-sql-fragments.patch",
           "sha256": "b54541a32fed28a71281ab02d49843cdfebfd1fc410fb20ff471367561d428f1"
         },
         {
           "description": "CVE-2026-55220, CVE-2026-45162: restrict unserialize allowed classes",
-          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/pimcore-CVE-2026-55220-unserialize-hardening.patch",
+          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.2.0/patches/pimcore-CVE-2026-55220-unserialize-hardening.patch",
           "sha256": "18fa53ef909a483d397a2e50ba7547fb247edc42dc1e8ab63b17c20d3eb3f7e4"
         },
         {
           "description": "CVE-2026-58401: restrict admin session token deserialization",
-          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/pimcore-CVE-2026-58401-admin-session-token.patch",
+          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.2.0/patches/pimcore-CVE-2026-58401-admin-session-token.patch",
           "sha256": "8586f9ba50acbd12593e316d422f3469ed04378bed75220361fac15d487b8c68"
         },
         {
           "description": "CVE-2026-55072: anchor class definition ID regex",
-          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/pimcore-CVE-2026-55072-class-definition-id-regex.patch",
+          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.2.0/patches/pimcore-CVE-2026-55072-class-definition-id-regex.patch",
           "sha256": "901fa8618fbb3e94532b8823307247d642f37ef53096c103eaee38eb16367173"
         },
         {
           "description": "CVE-2026-45703: WordExport authorization bypass, view permission on exported elements",
-          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/pimcore-CVE-2026-45703-wordexport-view-permission.patch",
+          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.2.0/patches/pimcore-CVE-2026-45703-wordexport-view-permission.patch",
           "sha256": "d80ebdcaefa3b2f71cfd819759b027a0ba695fa3f022d98d0e430b65a42e9c16"
         }
       ],
       "pimcore/admin-ui-classic-bundle": [
         {
           "description": "CVE-2026-44741: SQL injection in translation grid filters",
-          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.1.0/patches/admin-ui-classic-bundle-CVE-2026-44741-translation-grid.patch",
+          "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.2.0/patches/admin-ui-classic-bundle-CVE-2026-44741-translation-grid.patch",
           "sha256": "34f2bd337586789623480694d1fe5d9f719e7ec90bcb329fbb6c51b754f87893"
         }
       ]
