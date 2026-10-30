@@ -5,15 +5,19 @@ Backports of public Pimcore 2026.x security fixes for `pimcore/pimcore` 11.5.4â€
 ## Install
 
 ```bash
-composer config -g github-oauth.github.com <token>
-composer config -g github-oauth.raw.githubusercontent.com <token>
-composer config repositories.pimcore-11-security-patches vcs https://github.com/portadesign/pimcore-11-security-patches
-composer require portadesign/pimcore-11-security-patches:^1.0
-composer patches-relock && composer patches-repatch
+composer require portadesign/pimcore-11-security-patches
 bin/console cache:clear
 ```
 
-Commit `composer.json`, `composer.lock`, `patches.lock.json`. After every update of this package: `composer patches-relock && composer patches-repatch`.
+Composer asks once to trust the plugin (`allow-plugins`). On every `composer require`, `install` and `update` the plugin relocks and re-applies the patches when the patch set changed. Commit `composer.json`, `composer.lock`, `patches.lock.json`.
+
+Until the repo is public, run these once first:
+
+```bash
+composer config -g github-oauth.github.com <token>
+composer config -g github-oauth.raw.githubusercontent.com <token>
+composer config repositories.pimcore-11-security-patches vcs https://github.com/portadesign/pimcore-11-security-patches
+```
 
 ## Patches
 
@@ -36,7 +40,9 @@ Patch files carry a header with CVE, advisory, upstream commit and verified vers
 
 - `./verify.sh [pimcore-tag] [admin-ui-tag]`: every patch applies to pristine upstream tarballs (needs `gh`).
 - New patch: diff from upstream `2026.x`, header, entry in `extra.patches`, table row, `./verify.sh`.
-- Release: `./release.sh <version>` (rewrites patch URLs to the tag, commits, tags, pushes).
+- Release: `./release.sh <version>` (rewrites patch URLs to the tag, refreshes `vex.openvex.json`, commits, tags, pushes).
+- Advisory status lives in `advisories.json`; `php bin/build-vex.php` regenerates `vex.openvex.json` and `audit-ignore.json`.
+- CI runs `verify.sh` only; the exploit tests in `tests/` need a full Pimcore and a database and are not run there yet.
 - Patch already in a new Pimcore release (`git apply --check -R` passes): delete it.
 
 ## Skipped
@@ -47,3 +53,9 @@ Patch files carry a header with CVE, advisory, upstream commit and verified vers
 | CVE-2026-45704 | Risk accepted |
 | CVE-2026-45703 | Affected bundle not installed |
 | CVE-2026-45162 WebDAV, Table, `DataObject\Service` hunks | WebDAV and Block hardening was walked back upstream in #19345; Table and `DataObject\Service` changes were outside the requested subset |
+
+## Silencing scanners
+
+`trivy fs --scanners vuln --vex vendor/portadesign/pimcore-11-security-patches/vex.openvex.json .` drops the advisories fixed by this package.
+Copy the entries of `audit-ignore.json` into `config.audit.ignore` (and `config.policy.advisories.ignore-id` on Composer 2.10+) to silence `composer audit` and update blocking.
+Both hold only while this package is installed and its patches are applied.
