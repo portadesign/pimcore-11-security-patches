@@ -1,2 +1,5 @@
 .DS_Store
 .phpunit.cache/
+/vendor/
+/composer.lock
+/patches.lock.json
