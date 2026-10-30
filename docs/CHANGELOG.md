@@ -1,2 +1,3 @@
+- 2026-10-30 12:00 — Added `advisories.json` as the single advisory source; `bin/build-vex.php` generates `vex.openvex.json` (OpenVEX 0.2.0) and `audit-ignore.json` (Composer audit ignore list); `release.sh` regenerates both with a bumped version and fresh timestamp.
 - 2026-10-30 12:00 — GitHub Actions workflow `verify.yml` runs `verify.sh` for pimcore v11.5.4/v11.5.14.1 x admin-ui v1.7.6/v1.7.16 on push, PR and weekly.
 - 2026-10-30 12:00 — Composer plugin `Portadesign\PimcoreSecurityPatches\ComposerPlugin`: on `post-install-cmd`/`post-update-cmd` runs `patches-relock` and `patches-repatch` when `patches.lock.json` is missing or differs from the resolved patch set; `composer require` is enough. Package type is now `composer-plugin`, requires PHP ^8.3.

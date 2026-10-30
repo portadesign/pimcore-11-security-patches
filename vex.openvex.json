@@ -1,0 +1,340 @@
+{
+    "@context": "https://openvex.dev/ns/v0.2.0",
+    "@id": "https://github.com/portadesign/pimcore-11-security-patches/vex.openvex.json",
+    "author": "PORTA DESIGN",
+    "timestamp": "2026-10-30T10:57:19Z",
+    "last_updated": "2026-10-30T10:57:19Z",
+    "version": 1,
+    "tooling": "pimcore-11-security-patches v1.1.0",
+    "statements": [
+        {
+            "vulnerability": {
+                "name": "CVE-2026-27461"
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Backported in patches/pimcore-CVE-2026-27461-dependency-rlike.patch (upstream 1c3925fbec)."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-55634",
+                "aliases": [
+                    "PKSA-vgg9-cbdg-s4xt"
+                ]
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Backported in patches/pimcore-CVE-2026-55634-class-field-name-rce.patch (upstream a4f8c3cfee)."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-11407",
+                "aliases": [
+                    "PKSA-6dhb-gq75-qpgr"
+                ]
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Backported in patches/pimcore-CVE-2026-11407-twig-sandbox.patch (upstream fffa7f6396, ed8617f869, 16486afce8)."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-115894"
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Backported in patches/pimcore-CVE-2026-11407-twig-sandbox.patch (upstream fffa7f6396, ed8617f869, 16486afce8)."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-5394",
+                "aliases": [
+                    "PKSA-vp19-ydt7-tws9"
+                ]
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Backported in patches/pimcore-CVE-2026-5394-composite-index-sqli.patch (upstream 6df625ff74)."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-44739",
+                "aliases": [
+                    "PKSA-kp19-xmdp-rvyj"
+                ]
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Backported in patches/pimcore-CVE-2026-44739-custom-reports-sql.patch (upstream 3fd7733464)."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-55416",
+                "aliases": [
+                    "PKSA-pmf2-z78s-582m"
+                ]
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Backported in patches/pimcore-CVE-2026-55416-custom-reports-sql-fragments.patch (upstream 1999fee27e)."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-55220",
+                "aliases": [
+                    "PKSA-kkjc-bw16-f3kq"
+                ]
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Backported in patches/pimcore-CVE-2026-55220-unserialize-hardening.patch (upstream b184c01bf1, 4788bf3a3a, c7fa99aa7e, aa282383b8)."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-45162",
+                "aliases": [
+                    "PKSA-882j-k212-wjbf"
+                ]
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Backported in patches/pimcore-CVE-2026-55220-unserialize-hardening.patch (upstream b184c01bf1, 4788bf3a3a, c7fa99aa7e, aa282383b8). Safe subset only: WebDAV, Table and DataObject Service hunks are not backported."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-58401"
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Backported in patches/pimcore-CVE-2026-58401-admin-session-token.patch (upstream 397b881113)."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-55072",
+                "aliases": [
+                    "PKSA-fpxc-s2d8-24zv"
+                ]
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Backported in patches/pimcore-CVE-2026-55072-class-definition-id-regex.patch (upstream 33a0e1887e)."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-44741",
+                "aliases": [
+                    "PKSA-v29g-sqpm-mznn"
+                ]
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/admin-ui-classic-bundle@1.7.6",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/admin-ui-classic-bundle@1.7.6"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/admin-ui-classic-bundle@1.7.16",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/admin-ui-classic-bundle@1.7.16"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Backported in patches/admin-ui-classic-bundle-CVE-2026-44741-translation-grid.patch (upstream b5b987c712)."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-45703",
+                "aliases": [
+                    "PKSA-v5bg-33q7-q8zj"
+                ]
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "not_affected",
+            "justification": "vulnerable_code_not_present",
+            "impact_statement": "The affected word-export bundle is not installed."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-45260",
+                "aliases": [
+                    "PKSA-y4yc-6g1b-qfqz"
+                ]
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                }
+            ],
+            "status": "not_affected",
+            "justification": "inline_mitigations_already_exist",
+            "impact_statement": "WebDAV is blocked at the reverse proxy."
+        }
+    ]
+}

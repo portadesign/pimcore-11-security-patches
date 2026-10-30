@@ -1,0 +1,182 @@
+{
+  "products": {
+    "pimcore/pimcore": [
+      "11.5.4",
+      "11.5.14.1"
+    ],
+    "pimcore/admin-ui-classic-bundle": [
+      "1.7.6",
+      "1.7.16"
+    ]
+  },
+  "advisories": [
+    {
+      "cve": "CVE-2026-27461",
+      "pksa": null,
+      "status": "fixed",
+      "package": "pimcore/pimcore",
+      "patch": "patches/pimcore-CVE-2026-27461-dependency-rlike.patch",
+      "commits": [
+        "1c3925fbec"
+      ],
+      "reason": "CVE-2026-27461 backported"
+    },
+    {
+      "cve": "CVE-2026-55634",
+      "pksa": "PKSA-vgg9-cbdg-s4xt",
+      "status": "fixed",
+      "package": "pimcore/pimcore",
+      "patch": "patches/pimcore-CVE-2026-55634-class-field-name-rce.patch",
+      "commits": [
+        "a4f8c3cfee"
+      ],
+      "reason": "CVE-2026-55634 backported"
+    },
+    {
+      "cve": "CVE-2026-11407",
+      "pksa": "PKSA-6dhb-gq75-qpgr",
+      "status": "fixed",
+      "package": "pimcore/pimcore",
+      "patch": "patches/pimcore-CVE-2026-11407-twig-sandbox.patch",
+      "commits": [
+        "fffa7f6396",
+        "ed8617f869",
+        "16486afce8"
+      ],
+      "reason": "CVE-2026-11407 backported"
+    },
+    {
+      "cve": "CVE-2026-115894",
+      "pksa": null,
+      "status": "fixed",
+      "package": "pimcore/pimcore",
+      "patch": "patches/pimcore-CVE-2026-11407-twig-sandbox.patch",
+      "commits": [
+        "fffa7f6396",
+        "ed8617f869",
+        "16486afce8"
+      ],
+      "reason": "CVE-2026-115894 backported"
+    },
+    {
+      "cve": "CVE-2026-5394",
+      "pksa": "PKSA-vp19-ydt7-tws9",
+      "status": "fixed",
+      "package": "pimcore/pimcore",
+      "patch": "patches/pimcore-CVE-2026-5394-composite-index-sqli.patch",
+      "commits": [
+        "6df625ff74"
+      ],
+      "reason": "CVE-2026-5394 backported"
+    },
+    {
+      "cve": "CVE-2026-44739",
+      "pksa": "PKSA-kp19-xmdp-rvyj",
+      "status": "fixed",
+      "package": "pimcore/pimcore",
+      "patch": "patches/pimcore-CVE-2026-44739-custom-reports-sql.patch",
+      "commits": [
+        "3fd7733464"
+      ],
+      "reason": "CVE-2026-44739 backported"
+    },
+    {
+      "cve": "CVE-2026-55416",
+      "pksa": "PKSA-pmf2-z78s-582m",
+      "status": "fixed",
+      "package": "pimcore/pimcore",
+      "patch": "patches/pimcore-CVE-2026-55416-custom-reports-sql-fragments.patch",
+      "commits": [
+        "1999fee27e"
+      ],
+      "reason": "CVE-2026-55416 backported (portadesign/pimcore-11-security-patches)"
+    },
+    {
+      "cve": "CVE-2026-55220",
+      "pksa": "PKSA-kkjc-bw16-f3kq",
+      "status": "fixed",
+      "package": "pimcore/pimcore",
+      "patch": "patches/pimcore-CVE-2026-55220-unserialize-hardening.patch",
+      "commits": [
+        "b184c01bf1",
+        "4788bf3a3a",
+        "c7fa99aa7e",
+        "aa282383b8"
+      ],
+      "reason": "CVE-2026-55220 backported"
+    },
+    {
+      "cve": "CVE-2026-45162",
+      "pksa": "PKSA-882j-k212-wjbf",
+      "status": "fixed",
+      "package": "pimcore/pimcore",
+      "patch": "patches/pimcore-CVE-2026-55220-unserialize-hardening.patch",
+      "commits": [
+        "b184c01bf1",
+        "4788bf3a3a",
+        "c7fa99aa7e",
+        "aa282383b8"
+      ],
+      "notes": "Safe subset only: WebDAV, Table and DataObject Service hunks are not backported.",
+      "reason": "CVE-2026-45162 backported (safe subset)"
+    },
+    {
+      "cve": "CVE-2026-58401",
+      "pksa": null,
+      "status": "fixed",
+      "package": "pimcore/pimcore",
+      "patch": "patches/pimcore-CVE-2026-58401-admin-session-token.patch",
+      "commits": [
+        "397b881113"
+      ],
+      "reason": "CVE-2026-58401 backported"
+    },
+    {
+      "cve": "CVE-2026-55072",
+      "pksa": "PKSA-fpxc-s2d8-24zv",
+      "status": "fixed",
+      "package": "pimcore/pimcore",
+      "patch": "patches/pimcore-CVE-2026-55072-class-definition-id-regex.patch",
+      "commits": [
+        "33a0e1887e"
+      ],
+      "reason": "CVE-2026-55072 backported"
+    },
+    {
+      "cve": "CVE-2026-44741",
+      "pksa": "PKSA-v29g-sqpm-mznn",
+      "status": "fixed",
+      "package": "pimcore/admin-ui-classic-bundle",
+      "patch": "patches/admin-ui-classic-bundle-CVE-2026-44741-translation-grid.patch",
+      "commits": [
+        "b5b987c712"
+      ],
+      "reason": "CVE-2026-44741 backported"
+    },
+    {
+      "cve": "CVE-2026-45703",
+      "pksa": "PKSA-v5bg-33q7-q8zj",
+      "status": "not_affected",
+      "package": "pimcore/pimcore",
+      "justification": "vulnerable_code_not_present",
+      "impact": "The affected word-export bundle is not installed.",
+      "reason": "CVE-2026-45703 word-export bundle not installed"
+    },
+    {
+      "cve": "CVE-2026-45260",
+      "pksa": "PKSA-y4yc-6g1b-qfqz",
+      "status": "not_affected",
+      "package": "pimcore/pimcore",
+      "justification": "inline_mitigations_already_exist",
+      "impact": "WebDAV is blocked at the reverse proxy.",
+      "reason": "CVE-2026-45260 WebDAV blocked at proxy"
+    },
+    {
+      "cve": "CVE-2026-45704",
+      "pksa": "PKSA-vd5r-2gyh-m6cc",
+      "status": "accepted",
+      "package": "pimcore/pimcore",
+      "reason": "CVE-2026-45704 risk accepted"
+    }
+  ]
+}
