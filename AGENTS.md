@@ -48,4 +48,4 @@ Public GitHub repository, not on Packagist. Installation is documented in `READM
 
 - Projects: `suys-pim11` (branch `feat/php83`, on v1.1.0), `stock` (11.5.14.1, cweagans 2, not yet switched to the package).
 - `portadesign/docker-library` PR #6 pins `git` and `patch` in `pimcore-php`.
-- [`security-template`](https://github.com/portadesign/security-template): security.txt with expiry checks; scanner silencing is documented here, not there.
+- [`security-txt`](https://github.com/portadesign/security-txt): Composer package creating and checking security.txt; unrelated to patches.
