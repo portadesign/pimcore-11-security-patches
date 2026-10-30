@@ -4,13 +4,21 @@ Backports of public Pimcore 2026.x security fixes for `pimcore/pimcore` 11.5.4â€
 
 ## Install
 
+Public GitHub repository, not on Packagist. Requires `pimcore/pimcore` â‰¥ 11.5.4 and Composer 2.
+
 ```bash
 composer config repositories.pimcore-11-security-patches vcs https://github.com/portadesign/pimcore-11-security-patches
+composer config allow-plugins.cweagans/composer-patches true
+composer config allow-plugins.portadesign/pimcore-11-security-patches true
 composer require portadesign/pimcore-11-security-patches
 bin/console cache:clear
 ```
 
-Composer asks once to trust the plugin (`allow-plugins`). On every `composer require`, `install` and `update` the plugin checks that each patch is applied to the installed package and relocks and re-applies them when the patch set changed or a patch is missing. Commit `composer.json`, `composer.lock`, `patches.lock.json`.
+The two `allow-plugins` lines keep non-interactive installs (CI, Docker build) from stopping at the trust prompt. On every `composer require`, `install` and `update` the plugin checks that each patch is applied and relocks and re-applies them when the patch set changed or a patch is missing. Commit `composer.json`, `composer.lock`, `patches.lock.json`.
+
+Project on `cweagans/composer-patches` 1.x: run `composer remove cweagans/composer-patches`, delete `patches.lock.json`, then the steps above. Project patches in `extra.patches` keep working.
+
+Scanners: copy `audit-ignore.json` into `composer.json` `config` and point Trivy at `vendor/portadesign/pimcore-11-security-patches/vex.openvex.json`, see [Silencing scanners](#silencing-scanners). Check the [Skipped](#skipped) preconditions first.
 
 ## Patches
 
@@ -40,7 +48,7 @@ Patch files carry a header with CVE, advisory, upstream commit and verified vers
 
 ## Tests
 
-Run from a host project: uses its database and removes its fixtures; `--group CVE-2026-27461` selects one patch; revert the admin-ui patch with `patch -p1 -R` in its bundle directory.
+The dist install omits `tests/`; clone the repository next to the project or run `composer reinstall portadesign/pimcore-11-security-patches --prefer-source`. Run from a host project: uses its database and removes its fixtures; `--group CVE-2026-27461` selects one patch; revert the admin-ui patch with `patch -p1 -R` in its bundle directory.
 ```bash
 T="-c vendor/portadesign/pimcore-11-security-patches/phpunit.xml.dist"; vendor/bin/phpunit $T
 (cd vendor/pimcore/pimcore && git apply -R ../../portadesign/pimcore-11-security-patches/patches/pimcore-CVE-2026-27461-dependency-rlike.patch) && vendor/bin/phpunit $T --group CVE-2026-27461   # must fail
