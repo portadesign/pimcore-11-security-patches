@@ -45,6 +45,15 @@ Patch files carry a header with CVE, advisory, upstream commit and verified vers
 - CI runs `verify.sh` only; the exploit tests in `tests/` need a full Pimcore and a database and are not run there yet.
 - Patch already in a new Pimcore release (`git apply --check -R` passes): delete it.
 
+## Tests
+
+Run from a host project: uses its database and removes its fixtures; `--group CVE-2026-27461` selects one patch; revert the admin-ui patch with `patch -p1 -R` in its bundle directory.
+```bash
+T="-c vendor/portadesign/pimcore-11-security-patches/phpunit.xml.dist"; vendor/bin/phpunit $T
+(cd vendor/pimcore/pimcore && git apply -R ../../portadesign/pimcore-11-security-patches/patches/pimcore-CVE-2026-27461-dependency-rlike.patch) && vendor/bin/phpunit $T --group CVE-2026-27461   # must fail
+composer patches-repatch && vendor/bin/phpunit $T --group CVE-2026-27461   # must pass
+```
+
 ## Skipped
 
 | CVE | Reason |
