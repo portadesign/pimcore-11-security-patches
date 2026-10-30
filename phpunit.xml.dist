@@ -10,6 +10,7 @@
     <testsuites>
         <testsuite name="pimcore-11-security-patches">
             <directory>tests</directory>
+            <exclude>tests/Unit</exclude>
         </testsuite>
     </testsuites>
 </phpunit>

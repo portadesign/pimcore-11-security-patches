@@ -33,7 +33,7 @@ Patch files carry a header with CVE, advisory, upstream commit and verified vers
 
 - `./verify.sh [pimcore-tag] [admin-ui-tag]`: every patch applies to pristine upstream tarballs (needs `gh`).
 - New patch: diff from upstream `2026.x`, header, entry in `extra.patches`, table row, `./verify.sh`.
-- Release: `./release.sh <version>` (rewrites patch URLs to the tag, refreshes `vex.openvex.json`, commits, tags, pushes).
+- Release: `./release.sh <version>` (rewrites patch URLs to the tag, regenerates `sha256` values, refreshes `vex.openvex.json`, commits, tags, pushes).
 - Advisory status lives in `advisories.json`; `php bin/build-vex.php` regenerates `vex.openvex.json` and `audit-ignore.json`.
 - CI runs `verify.sh` only; the exploit tests in `tests/` need a full Pimcore and a database and are not run there yet.
 - Patch already in a new Pimcore release (`git apply --check -R` passes): delete it.

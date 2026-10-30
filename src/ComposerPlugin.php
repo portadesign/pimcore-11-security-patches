@@ -8,8 +8,6 @@ final readonly class ComposerPlugin implements \Composer\Plugin\PluginInterface,
 {
     private const GUARD_ENV = 'PORTADESIGN_PATCHES_SYNC';
 
-    private const COMMAND_NOT_FOUND = 127;
-
     private const PATCH_COMMANDS = ['patches-relock', 'patches-repatch'];
 
     public function activate(\Composer\Composer $composer, \Composer\IO\IOInterface $io): void
@@ -97,9 +95,15 @@ final readonly class ComposerPlugin implements \Composer\Plugin\PluginInterface,
 
         $locked = \cweagans\Composer\PatchCollection::fromJson($patchesPlugin->getLocker()->getLockData());
         $repository = $composer->getRepositoryManager()->getLocalRepository();
-        $executor = new \Composer\Util\ProcessExecutor($io);
-        $checked = 0;
-        $missing = [];
+        $inspector = new InstalledPatchInspector(
+            runner: new ComposerProcessRunner(executor: new \Composer\Util\ProcessExecutor($io)),
+            download: static function (\cweagans\Composer\Patch $patch) use ($patchesPlugin): void {
+                $patchesPlugin->download(patch: $patch);
+            },
+            io: $io,
+            bundledDirectory: dirname(path: __DIR__) . '/patches',
+        );
+        $targets = [];
 
         foreach ($this->patchedPackages(collection: $locked) as $name) {
             $package = $repository->findPackage(name: $name, constraint: '*');
@@ -108,42 +112,16 @@ final readonly class ComposerPlugin implements \Composer\Plugin\PluginInterface,
                 continue;
             }
 
-            foreach ($locked->getPatchesForPackage(package: $name) as $patch) {
-                if (!$patch instanceof \cweagans\Composer\Patch) {
-                    continue;
-                }
-
-                $patchesPlugin->download(patch: $patch);
-                ++$checked;
-                if (!$this->isApplied(executor: $executor, patch: $patch, installPath: $installPath)) {
-                    $missing[$name] = ($missing[$name] ?? 0) + 1;
-                }
-            }
+            $targets[$name] = [
+                'installPath' => $installPath,
+                'patches' => array_values(array: array_filter(
+                    array: $locked->getPatchesForPackage(package: $name),
+                    callback: static fn (mixed $patch): bool => $patch instanceof \cweagans\Composer\Patch,
+                )),
+            ];
         }
 
-        return ['checked' => $checked, 'missing' => $missing];
-    }
-
-    private function isApplied(\Composer\Util\ProcessExecutor $executor, \cweagans\Composer\Patch $patch, string $installPath): bool
-    {
-        $file = $patch->localPath ?? null;
-        if (null === $file) {
-            return false;
-        }
-
-        $strip = '-p' . ($patch->depth ?? 1);
-        $output = '';
-        $exitCode = $executor->execute(
-            command: ['patch', $strip, '--dry-run', '-R', '-s', '-f', '--batch', '-i', $file],
-            output: $output,
-            cwd: $installPath,
-        );
-
-        if (self::COMMAND_NOT_FOUND !== $exitCode || !is_dir(filename: $installPath . '/.git')) {
-            return 0 === $exitCode;
-        }
-
-        return 0 === $executor->execute(command: ['git', 'apply', '--check', '-R', $strip, $file], output: $output, cwd: $installPath);
+        return $inspector->inspectAll(targets: $targets);
     }
 
     private function findPatchesPlugin(\Composer\Composer $composer): ?\cweagans\Composer\Plugin\Patches
