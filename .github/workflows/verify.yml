@@ -1,0 +1,26 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '17 5 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: pimcore ${{ matrix.pimcore }} / admin-ui ${{ matrix.admin }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pimcore: [v11.5.4, v11.5.14.1]
+        admin: [v1.7.6, v1.7.16]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify patches
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: ./verify.sh "${{ matrix.pimcore }}" "${{ matrix.admin }}"

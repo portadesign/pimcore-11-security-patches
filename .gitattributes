@@ -1,0 +1,8 @@
+/tests export-ignore
+/.github export-ignore
+/bin export-ignore
+/advisories.json export-ignore
+/phpunit.xml.dist export-ignore
+/phpstan.neon export-ignore
+/verify.sh export-ignore
+/release.sh export-ignore
