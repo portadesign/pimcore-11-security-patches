@@ -1,6 +1,6 @@
 # pimcore-11-security-patches
 
-Security hardening for `pimcore/pimcore` 11.5.4–11.5.14.1 and `pimcore/admin-ui-classic-bundle` 1.7.6–1.7.16 against published CVEs, applied by [cweagans/composer-patches](https://github.com/cweagans/composer-patches) 2. Pimcore 11 is end of life; the fixes here are this package's own, written from the public advisories and this package's regression tests.
+Security hardening for `pimcore/pimcore` 11.5.4–11.5.14.1 and `pimcore/admin-ui-classic-bundle` 1.7.6–1.7.16 against published CVEs, applied by [cweagans/composer-patches](https://github.com/cweagans/composer-patches) 2..
 
 ## Install
 
