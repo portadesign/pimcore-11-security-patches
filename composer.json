@@ -108,6 +108,11 @@
                     "description": "CVE-2026-45162: unserialize without allowed_classes in the WebDAV delete log, Table, Block, editables and other model readers; HMAC-signed session elements",
                     "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/pimcore-CVE-2026-45162-unserialize-remaining.patch",
                     "sha256": "ebc9727a0698008f72da4937a07d4e4096caeea96f91b7158393688bb59407aa"
+                },
+                {
+                    "description": "CVE-2026-45704: CustomReports sharing rules enforced on the detail, data and export endpoints",
+                    "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.1/patches/pimcore-CVE-2026-45704-custom-reports-share.patch",
+                    "sha256": "7e41c7906cd037cbea53d89693f5b1587c61846fd11cd0b8402705cc1157461e"
                 }
             ],
             "pimcore/admin-ui-classic-bundle": [

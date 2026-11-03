@@ -125,9 +125,10 @@
         {
             "cve": "CVE-2026-45704",
             "pksa": "PKSA-vd5r-2gyh-m6cc",
-            "status": "accepted",
+            "status": "fixed",
             "package": "pimcore/pimcore",
-            "reason": "CVE-2026-45704 risk accepted (CustomReports share bypass, admin-only impact)"
+            "reason": "CVE-2026-45704 fixed by portadesign/pimcore-11-security-patches",
+            "patch": "patches/pimcore-CVE-2026-45704-custom-reports-share.patch"
         }
     ]
 }

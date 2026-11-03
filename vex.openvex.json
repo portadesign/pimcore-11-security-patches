@@ -2,8 +2,8 @@
     "@context": "https://openvex.dev/ns/v0.2.0",
     "@id": "https://github.com/portadesign/pimcore-11-security-patches/vex.openvex.json",
     "author": "Portadesign",
-    "timestamp": "2026-11-03T10:25:59Z",
-    "last_updated": "2026-11-03T10:25:59Z",
+    "timestamp": "2026-11-03T11:02:42Z",
+    "last_updated": "2026-11-03T11:02:42Z",
     "version": 3,
     "tooling": "pimcore-11-security-patches v1.0.1",
     "statements": [
@@ -504,6 +504,42 @@
             ],
             "status": "fixed",
             "status_notes": "Fixed by patches/pimcore-CVE-2026-45260-webdav-move-permissions.patch."
+        },
+        {
+            "vulnerability": {
+                "name": "CVE-2026-45704",
+                "aliases": [
+                    "PKSA-vd5r-2gyh-m6cc"
+                ]
+            },
+            "products": [
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@v11.5.4",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@v11.5.4"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
+                    }
+                },
+                {
+                    "@id": "pkg:composer/pimcore/pimcore@v11.5.14.1",
+                    "identifiers": {
+                        "purl": "pkg:composer/pimcore/pimcore@v11.5.14.1"
+                    }
+                }
+            ],
+            "status": "fixed",
+            "status_notes": "Fixed by patches/pimcore-CVE-2026-45704-custom-reports-share.patch."
         }
     ]
 }

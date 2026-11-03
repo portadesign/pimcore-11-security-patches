@@ -34,28 +34,16 @@ Commit `composer.json`, `composer.lock` and `patches.lock.json`. Every `composer
 | CVE-2026-55072 | pimcore | Class definition ID regex anchored (`/D`), name checked, `Block::load()` quotes table names |
 | CVE-2026-45260 | pimcore | WebDAV MOVE needs `create` on the destination, `publish` on the asset, `delete` when overwriting/restoring, `rename` for a rename; a failed save returns 500 |
 | CVE-2026-45703 | pimcore | WordExport skips elements the user may not `view` (no 403) |
+| CVE-2026-45704 | pimcore | Custom report detail, data, chart, drill-down and CSV endpoints enforce the listing sharing rule; `reports_config` users and admins keep full access |
 | CVE-2026-44741 | admin-ui-classic-bundle | Translation grid filter: column allowlist, quoted identifiers |
 | CVE-2026-45162 | admin-ui-classic-bundle | Dashboard config deserialised without classes |
 
 All patches are verified on 11.5.4, 11.5.14.1 / 1.7.6, 1.7.16. Each patch file starts with a header (CVE, advisory, verified versions, summary).
 
-## Skipped
-
-| CVE | Decision |
-| --- | --- |
-| CVE-2026-45704 | CustomReports share bypass accepted (admin-only impact); drop it from the ignore list if the project does not accept that |
-
 ## Scanners
 
 - Composer: copy `audit-ignore.json` into `composer.json` `config` (`audit.ignore`, and `policy.advisories.ignore-id` on 2.10+).
-- Trivy: `vex.openvex.json` (OpenVEX, matches the `composer.lock` PURL with and without the `v` prefix) hides the fixed CVEs; CVE-2026-45704 needs `.trivyignore.yaml`:
-
-```yaml
-# .trivyignore.yaml
-vulnerabilities:
-  - id: CVE-2026-45704
-    statement: CustomReports share bypass accepted, admin-only impact
-```
+- Trivy: `vex.openvex.json` (OpenVEX, matches the `composer.lock` PURL with and without the `v` prefix) hides every CVE above.
 
 ```yaml
 # GitHub Actions
@@ -63,12 +51,10 @@ vulnerabilities:
   with: { scan-type: fs, scan-ref: ., scanners: vuln, severity: "HIGH,CRITICAL", exit-code: "1" }
   env:
     TRIVY_VEX: vendor/portadesign/pimcore-11-security-patches/vex.openvex.json
-    TRIVY_IGNOREFILE: .trivyignore.yaml
 ```
 
 ```yaml
 # trivy.yaml for CLI runs
-ignorefile: .trivyignore.yaml
 vulnerability:
   vex: [vendor/portadesign/pimcore-11-security-patches/vex.openvex.json]
 ```

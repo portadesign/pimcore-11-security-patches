@@ -23,13 +23,13 @@ Every patch is an independent implementation. The inputs were the public advisor
 
 ## Tests
 
-- `tests/*Test.php`: exploit regression tests, one group per CVE. They need a host project with a database. Run inside the project container: copy the repo (without `vendor/`) into the project, e.g. `var/tmp/security-patches`, then `PIMCORE_PROJECT_ROOT=/app vendor/bin/phpunit -c var/tmp/security-patches/phpunit.xml.dist`. Last run (2026-11-03, v1.0.1): 542 tests green on stock (11.5.14.1), 535 on suys-pim11 (11.5.4), both PHP 8.3.36. Reverting a patch with `patch -R` can leave `*.orig` files; run `find vendor/pimcore -name '*.orig' -delete` afterwards. Hosts set `SET time_zone` to PHP's offset in `TranslationGridFilterTest`; `TwigSandboxTest` accepts the 11.5.14.1 `TypeError` from `Mail::renderParams()` (the message is cut at `' in "__string'` although the template is named `pimcore_email_subject`). Running them from the host without a database produces hundreds of errors; that is not a regression.
+- `tests/*Test.php`: exploit regression tests, one group per CVE. They need a host project with a database. Run inside the project container: copy the repo (without `vendor/`) into the project, e.g. `var/tmp/security-patches`, then `PIMCORE_PROJECT_ROOT=/app vendor/bin/phpunit -c var/tmp/security-patches/phpunit.xml.dist`. Last run (2026-11-03, v1.0.2): 584 tests green on stock (11.5.14.1), 577 on suys-pim11 (11.5.4), both PHP 8.3.36. Reverting a patch with `patch -R` can leave `*.orig` files; run `find vendor/pimcore -name '*.orig' -delete` afterwards. Hosts set `SET time_zone` to PHP's offset in `TranslationGridFilterTest`; `TwigSandboxTest` accepts the 11.5.14.1 `TypeError` from `Mail::renderParams()` (the message is cut at `' in "__string'` although the template is named `pimcore_email_subject`). Running them from the host without a database produces hundreds of errors; that is not a regression.
 - `tests/Unit`: plugin unit tests, `vendor/bin/phpunit -c phpunit.unit.xml.dist`, no host needed.
 - `composer phpstan` must be clean.
 
 ## Settled decisions
 
-- CVE-2026-45704 stays `accepted` (admin-only impact) and is the only entry outside the VEX; WebDAV must stay fully functional, no proxy precondition (owner decision 2026-11-03).
+- Every advisory is patched; nothing is accepted or skipped. WebDAV must stay fully functional, no proxy precondition (owner decision 2026-11-03).
 - The VEX tells the truth: a CVE is `fixed` only when every path in its advisory is patched.
 - Verification runs on every install; the cost of downloading is avoided by the bundled files.
 - No Packagist publication; vcs repository line in the README.
@@ -46,6 +46,7 @@ Every patch is an independent implementation. The inputs were the public advisor
 7. CVE-2026-45260 known gap kept for compatibility with the tests: Sabre deletes the destination before `Tree::move()` runs, so a failed `publish` check leaves the destination deleted.
 8. `ComposerPlugin` itself has no unit test.
 9. Characterisation tests that cannot fail against the patches: signed-length payloads in `tests/Support/RejectedSerializedPayloads.php` (PHP 8.3 rejects them itself), the assignment-path cases in `tests/CompositeIndexTest.php` and `tests/CompositeIndexLegacyKeyTest.php` load test; `tests/TwigSandboxTest.php` accepts any `substr(): Argument #3` TypeError on 11.5.14.1. Exploit tests leave orphan `versions` rows on the host; run the versions cleanup afterwards.
+10. CustomReports `downloadCsvAction` serves any `report-export-<uniqid>.csv` from the temp dir by name; bind export names to the session (reviewer finding on CVE-2026-45704).
 
 ## Conventions
 
