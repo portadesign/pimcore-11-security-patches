@@ -1,6 +1,6 @@
 # pimcore-11-security-patches
 
-Security hardening for `pimcore/pimcore` 11.5.4–11.5.14.1 and `pimcore/admin-ui-classic-bundle` 1.7.6–1.7.16 against published CVEs, applied by [cweagans/composer-patches](https://github.com/cweagans/composer-patches) 2..
+Security hardening for `pimcore/pimcore` 11.5.4–11.5.14.1 and `pimcore/admin-ui-classic-bundle` 1.7.6–1.7.16 against published CVEs, applied by [cweagans/composer-patches](https://github.com/cweagans/composer-patches) 2.
 
 ## Install
 
@@ -42,7 +42,7 @@ Patch files carry a header with CVE, advisory and verified versions.
 ## Maintain
 
 - `./verify.sh [pimcore-tag] [admin-ui-tag]`: every patch applies to pristine release tarballs (needs `gh`).
-- New patch: written from the advisory and a failing test, header, entry in `extra.patches`, table row, `./verify.sh`.
+- New patch: failing test first, then the patch with header, entry in `extra.patches`, table row, `./verify.sh`.
 - Release: `./release.sh <version>` (rewrites patch URLs to the tag, regenerates `sha256` values, refreshes `vex.openvex.json`, commits, tags, pushes).
 - Advisory status lives in `advisories.json`; `php bin/build-vex.php` regenerates `vex.openvex.json` and `audit-ignore.json`.
 - CI runs `verify.sh` only; the exploit tests in `tests/` need a full Pimcore and a database and are not run there yet.
