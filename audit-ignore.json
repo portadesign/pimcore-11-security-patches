@@ -3,7 +3,7 @@
         "audit": {
             "ignore": {
                 "PKSA-6dhb-gq75-qpgr": "CVE-2026-11407 fixed by portadesign/pimcore-11-security-patches",
-                "PKSA-882j-k212-wjbf": "CVE-2026-45162 partially fixed by portadesign/pimcore-11-security-patches, WebDAV blocked at proxy",
+                "PKSA-882j-k212-wjbf": "CVE-2026-45162 fixed by portadesign/pimcore-11-security-patches",
                 "PKSA-8x4n-f9v2-4s1d": "CVE-2026-27461 fixed by portadesign/pimcore-11-security-patches",
                 "PKSA-fpxc-s2d8-24zv": "CVE-2026-55072 fixed by portadesign/pimcore-11-security-patches",
                 "PKSA-kkjc-bw16-f3kq": "CVE-2026-55220 fixed by portadesign/pimcore-11-security-patches",
@@ -21,7 +21,7 @@
             "advisories": {
                 "ignore-id": {
                     "PKSA-6dhb-gq75-qpgr": "CVE-2026-11407 fixed by portadesign/pimcore-11-security-patches",
-                    "PKSA-882j-k212-wjbf": "CVE-2026-45162 partially fixed by portadesign/pimcore-11-security-patches, WebDAV blocked at proxy",
+                    "PKSA-882j-k212-wjbf": "CVE-2026-45162 fixed by portadesign/pimcore-11-security-patches",
                     "PKSA-8x4n-f9v2-4s1d": "CVE-2026-27461 fixed by portadesign/pimcore-11-security-patches",
                     "PKSA-fpxc-s2d8-24zv": "CVE-2026-55072 fixed by portadesign/pimcore-11-security-patches",
                     "PKSA-kkjc-bw16-f3kq": "CVE-2026-55220 fixed by portadesign/pimcore-11-security-patches",

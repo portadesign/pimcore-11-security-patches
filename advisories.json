@@ -77,11 +77,10 @@
         {
             "cve": "CVE-2026-45162",
             "pksa": "PKSA-882j-k212-wjbf",
-            "status": "affected",
+            "status": "fixed",
             "package": "pimcore/pimcore",
-            "patch": "patches/pimcore-CVE-2026-55220-unserialize-hardening.patch",
-            "action": "Partial fix: Serialize/Hotspotimage/Site/CustomLayout/TmpStore hardened; WebDAV MOVE is covered by CVE-2026-45260; block /asset/webdav at the reverse proxy for the remaining WebDAV surface",
-            "reason": "CVE-2026-45162 partially fixed by portadesign/pimcore-11-security-patches, WebDAV blocked at proxy"
+            "patch": "patches/pimcore-CVE-2026-55220-unserialize-hardening.patch, patches/pimcore-CVE-2026-45162-unserialize-remaining.patch, patches/admin-ui-classic-bundle-CVE-2026-45162-dashboard.patch",
+            "reason": "CVE-2026-45162 fixed by portadesign/pimcore-11-security-patches"
         },
         {
             "cve": "CVE-2026-58401",

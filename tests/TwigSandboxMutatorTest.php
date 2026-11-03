@@ -383,7 +383,7 @@ final class TwigSandboxMutatorTest extends \PHPUnit\Framework\TestCase
         $payload = ["x') AND (SELECT injected) AND ('1"];
         $statements = [];
 
-        $connection = $this->createMock(\Doctrine\DBAL\Connection::class);
+        $connection = $this->createStub(\Doctrine\DBAL\Connection::class);
         $connection->method('fetchOne')->willReturnCallback(static function (string $sql) use (&$statements): int {
             $statements[] = $sql;
 

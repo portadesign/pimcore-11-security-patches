@@ -2,8 +2,8 @@
     "@context": "https://openvex.dev/ns/v0.2.0",
     "@id": "https://github.com/portadesign/pimcore-11-security-patches/vex.openvex.json",
     "author": "PORTA DESIGN",
-    "timestamp": "2026-11-02T20:07:42Z",
-    "last_updated": "2026-11-02T20:07:42Z",
+    "timestamp": "2026-11-03T09:52:52Z",
+    "last_updated": "2026-11-03T09:52:52Z",
     "version": 2,
     "tooling": "pimcore-11-security-patches v1.0.0",
     "statements": [
@@ -325,9 +325,8 @@
                     }
                 }
             ],
-            "status": "affected",
-            "status_notes": "Partially fixed by patches/pimcore-CVE-2026-55220-unserialize-hardening.patch.",
-            "action_statement": "Partial fix: Serialize/Hotspotimage/Site/CustomLayout/TmpStore hardened; WebDAV MOVE is covered by CVE-2026-45260; block /asset/webdav at the reverse proxy for the remaining WebDAV surface"
+            "status": "fixed",
+            "status_notes": "Fixed by patches/pimcore-CVE-2026-55220-unserialize-hardening.patch, patches/pimcore-CVE-2026-45162-unserialize-remaining.patch, patches/admin-ui-classic-bundle-CVE-2026-45162-dashboard.patch."
         },
         {
             "vulnerability": {
