@@ -60,9 +60,9 @@
                     "sha256": "d4519332105298f927fa07f132aebe72f11ceea76baf65a5938062f9a2e27f8f"
                 },
                 {
-                    "description": "CVE-2026-11407, CVE-2026-115894: Twig sandbox bypass and reachable model getters",
+                    "description": "CVE-2026-11407: Twig sandbox bypass and reachable model getters",
                     "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.2/patches/pimcore-CVE-2026-11407-twig-sandbox.patch",
-                    "sha256": "f2f87c398f74f1821916dac4b0380399e4bc3896d9b75ff6ce1970a7ab6971e1"
+                    "sha256": "3fb1bf6d9c6d93175a6f4b5313d249ce572e675ff028e8a4a4ac8aa3ced94a7d"
                 },
                 {
                     "description": "CVE-2026-5394: SQL injection in composite indexes",
@@ -85,9 +85,9 @@
                     "sha256": "08f455259dc02d9c32390d124943cb8f40ee945f8dfc30209746dd0941ef6373"
                 },
                 {
-                    "description": "CVE-2026-58401: restrict admin session token deserialization",
-                    "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.2/patches/pimcore-CVE-2026-58401-admin-session-token.patch",
-                    "sha256": "5479d921797618718f2ce85e5fe141dd3b10dbdfbdef520471c1726223b61970"
+                    "description": "PD-2026-001 (no CVE): restrict admin session token deserialization",
+                    "url": "https://raw.githubusercontent.com/portadesign/pimcore-11-security-patches/v1.0.2/patches/pimcore-PD-2026-001-admin-session-token.patch",
+                    "sha256": "653fc9d42974171f691edc0750789fcff42473db6bab97e2e1d2bc2078a89699"
                 },
                 {
                     "description": "CVE-2026-55072: anchor class definition ID regex",

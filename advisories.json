@@ -35,14 +35,6 @@
             "reason": "CVE-2026-11407 fixed by portadesign/pimcore-11-security-patches"
         },
         {
-            "cve": "CVE-2026-115894",
-            "pksa": null,
-            "status": "fixed",
-            "package": "pimcore/pimcore",
-            "patch": "patches/pimcore-CVE-2026-11407-twig-sandbox.patch",
-            "reason": "CVE-2026-115894 fixed by portadesign/pimcore-11-security-patches"
-        },
-        {
             "cve": "CVE-2026-5394",
             "pksa": "PKSA-vp19-ydt7-tws9",
             "status": "fixed",
@@ -83,12 +75,12 @@
             "reason": "CVE-2026-45162 fixed by portadesign/pimcore-11-security-patches"
         },
         {
-            "cve": "CVE-2026-58401",
+            "cve": "PD-2026-001",
             "pksa": null,
-            "status": "fixed",
+            "status": "hardening",
             "package": "pimcore/pimcore",
-            "patch": "patches/pimcore-CVE-2026-58401-admin-session-token.patch",
-            "reason": "CVE-2026-58401 fixed by portadesign/pimcore-11-security-patches"
+            "patch": "patches/pimcore-PD-2026-001-admin-session-token.patch",
+            "reason": "PD-2026-001: no public advisory; admin session token class allowlist, Portadesign hardening, not listed in the VEX"
         },
         {
             "cve": "CVE-2026-55072",

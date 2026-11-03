@@ -2,9 +2,9 @@
     "@context": "https://openvex.dev/ns/v0.2.0",
     "@id": "https://github.com/portadesign/pimcore-11-security-patches/vex.openvex.json",
     "author": "Portadesign",
-    "timestamp": "2026-11-03T11:12:32Z",
-    "last_updated": "2026-11-03T11:12:32Z",
-    "version": 4,
+    "timestamp": "2026-11-03T12:11:01Z",
+    "last_updated": "2026-11-03T12:11:01Z",
+    "version": 5,
     "tooling": "pimcore-11-security-patches v1.0.2",
     "statements": [
         {
@@ -85,39 +85,6 @@
                 "aliases": [
                     "PKSA-6dhb-gq75-qpgr"
                 ]
-            },
-            "products": [
-                {
-                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
-                    "identifiers": {
-                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
-                    }
-                },
-                {
-                    "@id": "pkg:composer/pimcore/pimcore@v11.5.4",
-                    "identifiers": {
-                        "purl": "pkg:composer/pimcore/pimcore@v11.5.4"
-                    }
-                },
-                {
-                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
-                    "identifiers": {
-                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
-                    }
-                },
-                {
-                    "@id": "pkg:composer/pimcore/pimcore@v11.5.14.1",
-                    "identifiers": {
-                        "purl": "pkg:composer/pimcore/pimcore@v11.5.14.1"
-                    }
-                }
-            ],
-            "status": "fixed",
-            "status_notes": "Fixed by patches/pimcore-CVE-2026-11407-twig-sandbox.patch."
-        },
-        {
-            "vulnerability": {
-                "name": "CVE-2026-115894"
             },
             "products": [
                 {
@@ -327,39 +294,6 @@
             ],
             "status": "fixed",
             "status_notes": "Fixed by patches/pimcore-CVE-2026-55220-unserialize-hardening.patch, patches/pimcore-CVE-2026-45162-unserialize-remaining.patch, patches/admin-ui-classic-bundle-CVE-2026-45162-dashboard.patch."
-        },
-        {
-            "vulnerability": {
-                "name": "CVE-2026-58401"
-            },
-            "products": [
-                {
-                    "@id": "pkg:composer/pimcore/pimcore@11.5.4",
-                    "identifiers": {
-                        "purl": "pkg:composer/pimcore/pimcore@11.5.4"
-                    }
-                },
-                {
-                    "@id": "pkg:composer/pimcore/pimcore@v11.5.4",
-                    "identifiers": {
-                        "purl": "pkg:composer/pimcore/pimcore@v11.5.4"
-                    }
-                },
-                {
-                    "@id": "pkg:composer/pimcore/pimcore@11.5.14.1",
-                    "identifiers": {
-                        "purl": "pkg:composer/pimcore/pimcore@11.5.14.1"
-                    }
-                },
-                {
-                    "@id": "pkg:composer/pimcore/pimcore@v11.5.14.1",
-                    "identifiers": {
-                        "purl": "pkg:composer/pimcore/pimcore@v11.5.14.1"
-                    }
-                }
-            ],
-            "status": "fixed",
-            "status_notes": "Fixed by patches/pimcore-CVE-2026-58401-admin-session-token.patch."
         },
         {
             "vulnerability": {

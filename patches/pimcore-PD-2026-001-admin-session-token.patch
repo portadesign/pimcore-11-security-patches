@@ -1,4 +1,4 @@
-CVE: CVE-2026-58401
+ID: PD-2026-001 (no public advisory, Portadesign hardening)
 Package: pimcore/pimcore
 Verified: 11.5.4, 11.5.14.1
 Summary: The admin session token is deserialised with a class allowlist; a payload naming any other class is rejected and the request stays unauthenticated. Custom token classes go to pimcore.security.session_token_allowed_classes.

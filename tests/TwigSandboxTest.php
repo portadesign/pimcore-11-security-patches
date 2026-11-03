@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Portadesign\PimcoreSecurityPatches\Tests;
 
 #[\PHPUnit\Framework\Attributes\Group('CVE-2026-11407')]
-#[\PHPUnit\Framework\Attributes\Group('CVE-2026-115894')]
 final class TwigSandboxTest extends \PHPUnit\Framework\TestCase
 {
     private \Pimcore\Templating\TwigDefaultDelegatingEngine $engine;

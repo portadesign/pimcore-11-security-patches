@@ -1,3 +1,5 @@
+- 2026-11-03 14:40 — v1.0.3: release with the id cleanup below.
+- 2026-11-03 14:35 — CVE-2026-58401 and CVE-2026-115894 do not exist on NVD, MITRE, GitHub Advisory DB or OSV. Admin session token allowlist renamed to internal id PD-2026-001 (status `hardening`, `patches/pimcore-PD-2026-001-admin-session-token.patch`, out of the VEX); CVE-2026-115894 dropped, the Twig sandbox patch carries CVE-2026-11407 only.
 - 2026-11-03 14:20 — LICENSE file added (GPL-3.0-or-later, as declared in composer.json).
 - 2026-11-03 13:05 — v1.0.2: CVE-2026-45704 fixed (`patches/pimcore-CVE-2026-45704-custom-reports-share.patch`: custom report detail, data, chart, drill-down and CSV endpoints enforce the listing sharing rule; `tests/CustomReportsShareTest.php`). Nothing is skipped or accepted any more; `.trivyignore.yaml` no longer needed.
 - 2026-11-03 11:55 — Author name "Portadesign" (composer.json, VEX, AGENTS.md).
