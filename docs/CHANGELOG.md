@@ -1,3 +1,4 @@
+- 2026-11-03 11:55 — Author name "Portadesign" (composer.json, VEX, AGENTS.md).
 - 2026-11-03 10:55 — README condensed (108 → ~95 lines): one-line patch notes, scanner section merged, install prerequisites shortened.
 - 2026-11-03 10:40 — v1.0.1: CVE-2026-45162 fully fixed. `patches/pimcore-CVE-2026-45162-unserialize-remaining.patch` (WebDAV delete log vetted in `Asset\WebDAV\Service::getDeleteLog()`, HMAC-signed session elements in `tmp_store`, Table, Link, Geo fields, date properties, asset custom settings, Block, ImageGallery, Video, document editables, classification store marshallers, SEO error-log detail) and `patches/admin-ui-classic-bundle-CVE-2026-45162-dashboard.patch`; `tests/UnserializeRemainingPathsTest.php`. No proxy precondition any more; Skipped table keeps only CVE-2026-45704.
 - 2026-11-03 09:05 — README: intro sentence shortened.

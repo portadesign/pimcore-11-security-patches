@@ -4,7 +4,7 @@ Read this first. It explains why the package exists, how it works, which decisio
 
 ## Purpose
 
-Pimcore 11 reached end of life with 11.5.14.1 (admin-ui-classic-bundle 1.7.16) while CVEs against it kept being published. PORTA DESIGN runs several Pimcore 11 projects (suys-pim11, stock, more) on the same base image (`portadev/pimcore-php`, Alpine, ships `git` and `patch`). This package carries PORTA DESIGN's own fixes for those CVEs, written from the public advisories and this package's regression tests, and applies them from Composer, so each project needs only `composer require` and gets the same patch set, verification and scanner silencing.
+Pimcore 11 reached end of life with 11.5.14.1 (admin-ui-classic-bundle 1.7.16) while CVEs against it kept being published. Portadesign runs several Pimcore 11 projects (suys-pim11, stock, more) on the same base image (`portadev/pimcore-php`, Alpine, ships `git` and `patch`). This package carries Portadesign's own fixes for those CVEs, written from the public advisories and this package's regression tests, and applies them from Composer, so each project needs only `composer require` and gets the same patch set, verification and scanner silencing.
 
 Public GitHub repository, not on Packagist. Installation is documented in `README.md` and must stay at a handful of copy-paste commands.
 
